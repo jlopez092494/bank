@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Client name:</strong>
+  <%= @loan.client_name %>
+</p>
+
+<p>
+  <strong>Loan amount:</strong>
+  <%= @loan.loan_amount %>
+</p>
+
+<p>
+  <strong>Loan type:</strong>
+  <%= @loan.loan_type %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @loan.created_at %>
+</p>
+<%= link_to 'Edit', edit_loan_path(@loan) %> |
+<%= link_to 'Back', loans_path %>
+
+<h4>Payments to Loan</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id loan</th>
+      <th>Payment amount</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <% debt = @loan.loan_amount %>
+  <tbody>
+    <% @payments.each do |payment| %>
+      <% if payment.id_loan = @loan.id %>
+      <tr>
+        <td><%= payment.id_loan %></td>
+        <td><%= payment.payment_amount %></td>
+        <% debt = debt - payment.payment_amount %>
+        <td><%= link_to 'Destroy', payment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<p>
+  Amount left to pay: <%=debt%>
+</p>
+
+
+<%= link_to 'New Payment', new_payment_path %>

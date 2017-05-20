@@ -1,0 +1,25 @@
+html,body{
+  margin: 0px;
+  font-family: 'Open Sans', sans-serif;
+}
+.be-red{
+  background-color: #E74C3C;
+}
+.white{
+  color: #ECF0F1;
+}
+.large-padding{
+  padding: 10px 7px;
+}
+.field{
+  margin-top:1em;
+}
+.form-control{
+  border: none;
+  border-bottom: 1px solid;
+  outline: none;
+  width: 100%;
+  display: block;
+  padding: 10px 0px;
+  font-size: 1.2em;
+}
